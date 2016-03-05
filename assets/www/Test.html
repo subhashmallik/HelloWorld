@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  	       <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+   </head>
+   <body>
+          <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+          <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	      <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		    
+  <div data-role="page"  id="testPage" onload="getExamList()">
+  <div data-role="header">
+    <h2>On Line Test</h2>
+	 <a href="#nav-panel" data-icon="bars" data-iconpos="notext" onclick="getExamList()">Menu</a>
+     <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+
+  </div>
+     <div data-role="main" class="ui-content" id="mainContent">
+      <button id="startQuiz"><a href="quiz.html" data-role="button">Start Quiz!</a></button>
+     </div>
+            
+    <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+
+		<ul data-role="listview" id="leftPanel">
+            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+              
+		</ul>
+
+	</div><!-- /panel -->
+
+	<div data-role="panel" data-position="right" data-display="reveal" data-theme="a" id="add-form">
+
+        <form class="userform">
+
+        	<h2>Login</h2>
+
+            <label for="name">Username:</label>
+            <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
+                <div class="ui-block-b"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Save</a></div>
+			</div>
+        </form>
+
+	</div>
+ <div dtata-role="footer">
+ 	<div id="myDiv"></div>
+	 <h6 align="center">&copy; Wizturn.com </h6>
+</div>
+</div>
+ <div data-role="page" id="quizPage">
+            
+            <div data-role="header">
+                <h1>Quiz</h1>
+            </div>
+            
+            <div data-role="content">
+				<div class="quizdisplay" id="question"><p id="q"></p></div>
+				<div class="quizdisplay" id="options">
+				<fieldset data-role="controlgroup">
+				<label for="a" id="a1"></label>
+				<input type="radio" name="a" id="a">
+				<label for="b" id="a2"></label>
+				<input type="radio" name="b" id="b">
+				<label for="c" id="a3"></label>
+				<input type="radio" name="c" id="c">
+				<label for="d" id="a4"></label>
+				<input type="radio" name="d" id="d">
+				</fieldset>
+        		</div>
+				<div class="quizdisplay" id="next"><input type="button" data-inline="true" value="Next"/></div>
+            </div>
+            
+            <div data-role="footer">
+                <h6>wizturn.com</h6>
+            </div>
+</div>
+		<script src="main.js"></script>
+		<script src="app.js"></script>
+		<script src="quiz.js"></script>
+
+   </body>
+ <html>

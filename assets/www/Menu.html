@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.11.0.js">
+</script>
+<script>
+$(document).ready(function(){
+$("#l1").hide();
+$("#l2").hide();
+
+$("#buttoggle1").click(function(){
+$("#l1").toggle();
+$("#l2").hide();
+});
+
+$("#buttoggle2").click(function(){
+$("#l2").toggle();
+$("#l1").hide();
+});
+});
+</script>
+</head>
+<body>
+<p>select your item</p>
+<button type ="toggle" id="buttoggle1">veg</button><button type ="toggle" id="buttoggle2">non veg</button>
+<list id="l1"><p>vegetarian</p>
+<ul>chapti</ul>
+<ul>Daal</ul>
+<ul>Rice</ul>
+</list>
+<list id="l2"><p>non vegetarian</p>
+<ul>butter chicken</ul>
+<ul>Fish</ul>
+<ul>Egg</ul>
+</list>
+</body>
+</html>

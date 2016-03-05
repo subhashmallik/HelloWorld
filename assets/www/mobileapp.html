@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Mobile App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="jquery.mobile-1.4.2.min.css">
+<script src="jquery-1.11.0.js"></script>
+<script src="jquery.mobile-1.4.2.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="pageone">
+<div data-role="header">
+<h2>First Page</h2>
+</div>
+<div data-role="main">
+<p>This is the main content of the page.</p>
+<p>You can go two the <a href="#pagetwo" data-transition="turn">second page</a>.</p>
+</div>
+<div data-role="footer">
+<h4>mobilexweb.com</h4>
+</div>
+</div>
+<div data-role="page" id="pagetwo">
+<div data-role="header">
+<a href="#pageone" data-transition="slidedown"><button type="button" data-mini="true" class="ui-btn ui-icon-carat-l ui-btn-inline ui-btn-icon-left ui-corner-all">Back</button></a>
+<h1>Second Page</h1>
+</div>
+<div data-role="main">
+<p>This is the main content of second page</p>
+<p>you can go back using the header's button, <a href="#pageone" data-transition="flip">clicking here</a> or using your browser's back button.</p>
+</div>
+<div data-role="footer">
+<h4>mobilexweb.com</h4>
+</div>
+</div>

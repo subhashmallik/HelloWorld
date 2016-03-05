@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+ </head>
+    <body onload="init()">
+      <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="main.js"></script>
+	   <script type="text/javascript" charset="utf-8" src="test.js"></script>
+	 <script  type="text/javascript" charset="utf-8"> 
+	  // var dd = $.Deferred();
+            // var jqd = $.Deferred();
+            // $.when(dd, jqd).done(doInit);
+            // $(document).bind('mobileinit', function () {
+                // jqd.resolve();
+            // });
+			// document.addEventListener('deviceready', deviceReady, false);
+            // function deviceReady() {
+                // dd.resolve();
+            // }
+
+            // function doInit() {
+                // alert('Ready');
+            // }
+			  // function callNewActivity() {
+        // window.MainActivity.customFunctionCalled();
+    // }
+	 
+ function changeActivity() {
+	 navigator.notification.alert("change activity", function() {});
+	 $.mobile.changePage("Register.html");
+   // window.MyCls.changeActivity();
+    }
+	function testActivity() {
+	 navigator.notification.alert("Go to Test", function() {});
+	 	$.post("http://192.168.1.112/exam/android/student.php", {action: 'exam-list', id: '228'}, function(res) {
+		
+		Object.values = function(object) {
+  var values = [];
+  for(var property in object) {
+    values.push(object[property]);
+  }
+  return values;
+}
+	console.log(JSON.stringify((res)));
+		
+						if(res.status == 'success') {
+							for (var i=0; i < res.exams.length; i++) {
+							console.log(res.exams[i].exam_name);
+							}
+						}
+					},"json");
+					
+		 $.mobile.changePage("Test.html");
+    //window.MyCls.changeActivity();
+    }
+	function getExamList() {
+		
+		$.post("http://192.168.1.112/exam/android/student.php", {action: 'exam-list', id: '228'}, function(res) {
+						if(res.status == 'success') {
+						
+						 navigator.notification.alert("Exam list", function() {});
+							for (var i=0; i<res.exams.length; i++) {
+							console.log(res.exams[i].exam_name);
+							console.log(res.exams[i].exam_duration);
+							console.log(res.exams[i].exam_uid);
+							$('#leftPanel').append('<li id='+res.exams[i].exam_uid+' onclick="startExam(this.id)">'+res.exams[i].exam_name+" Time "+res.exams[i].								exam_time+'</li>');
+							}
+							$('#leftPanel').listview('refresh');
+						}
+					},"json");
+		
+	}
+	
+	function startExam(examId){
+
+			var e = examId;
+			$.post("http://192.168.1.112/exam/android/student.php", {action: 'get-exam', exam_uid:e, id: '228'}, function(res) {
+			
+			Object.values = function(object) {
+			var values = [];
+			for(var property in object) {
+			values.push(object[property]);
+			}
+				return values;
+			}
+			console.log(JSON.stringify((res)));
+			$.mobile.navigate( "#quizPage" );
+			for (var i=0; i<res.questions.length; i++) {
+							console.log(res.questions[i].question);
+							//console.log(res.questions[i].exam_duration);
+							//console.log(res.questions[i].exam_uid);
+							
+							$('#mainContent').append('<h2>'+res.questions[i].question+'</h2>'
+							+'<fieldset data-role="controlgroup">'+
+				'<label for="a" id="a1">'+res.questions[i].choice1+'</label>'+
+				'<input type="radio" name="a" id="a" value="'+res.questions[i].choice1+'">'+
+				'<label for="b" id="a2">'+res.questions[i].choice2+'</label>'+
+				'<input type="radio" name="b" id="b" value="'+res.questions[i].choice2+'">'+
+				'<label for="c" id="a3">'+res.questions[i].choice3+'</label>'+
+				'<input type="radio" name="c" id="c" value="'+res.questions[i].choice3+'">'+
+				'<label for="d" id="a4">'+res.questions[i].choice4+'</label>'+
+				'<input type="radio" name="d" id="d" value="'+res.questions[i].choice4+'"></fieldset>');
+							//$(#startQuiz).value = "Next";
+				}
+			},"json");
+	
+	}
+	
+	</script>
+	<script>
+	function regReady() {
+        //console.log("deviceReady");
+		console.log("Page show");
+		//initialize the quiz
+		$("#regForm").on("submit",function(e) {
+          //disable the button so we can't resubmit while we wait
+           $("#submitButton",this).attr("disabled","disabled");
+            var n = $("#name", this).val();
+            var u = $("#email", this).val();
+            var p = $("#password", this).val();
+            var ph = $("#phonenumber", this).val();
+            var i = $("#institution", this).val();
+            if( n != '' && u != '' && p != '' && ph != '' && i != '') {
+                 $.post("http://192.168.1.112/exam/android/student.php", {action: 'register', name:n, email:u, password:p, phone:ph, institution:i}, function               (res) {
+                    if(res.status == 'success') {
+					var i = res.id;
+					    window.localStorage["resid"] = i;
+                        navigator.notification.alert("Your registeration successful registration ID is  " +res.id, function() {});
+                        $.mobile.changePage("Login.html");
+                    } else {
+                           navigator.notification.alert("Your registeration failed", function() {});
+                      }
+                    $("#submitButton").removeAttr("disabled");
+                },"json");
+            } else{
+                navigator.notification.alert("Please enter all fields", function() {});
+				  $("#submitButton").removeAttr("disabled");
+              }
+        return false;
+         });
+}
+
+
+	</script>
+	
+<div data-role="page"  id="loginPage">
+  <div data-role="header">
+    <h2 class="ui-bar ui-bar-a ui-corner-all">Online Test</h2>
+  </div>
+ <div data-role="main" class="ui-content">
+   <form id="loginForm">
+	 <label for="emailid">Email Id </label>
+	 <input type="email" name="email" id="email"/>
+	 <label for="password">Password</label>
+	 <input type="password" name="password" id="password"/>
+	 <input type="submit" value="Login" id="submitButton" class="ui-btn ui-shadow ui-corner-all"/>
+	</form>
+  <button class="ui-btn ui-corner-all" id="regButton" data-rel="dialog" data-transition="pop" onclick="changeActivity()">Register</button>
+  </div>
+  <div dtata-role="footer">
+ 	<h6 align="center">&copy; Wizturn.com </h6>
+ </div>
+ </div>
+ </body>
+ </html>

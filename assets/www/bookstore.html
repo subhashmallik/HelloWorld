@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+<title>Book store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="jquery.mobile-1.4.2.min.css">
+<script src="jquery-1.11.0.js"></script>
+<script src="jquery.mobile-1.4.2.min.js"></script>
+<script>
+$(document).on("pageinit",function(){
+$("#save").click(function(){
+if (($("#btitle").val() == "" ) || ($("#bno").val() == "" ) || ($("#bath").val() == "" ) || ($("#sub").val() == "" )) {
+alert("Fill all fields");
+return false;
+}
+else{
+alert("form submit");
+return true;
+}
+});
+$("#b1").click(function(){
+var listitem = $( this ).parent( "li" );
+ listitem.remove();
+                $( "#list" ).listview( "refresh" );
+//var del=document.getElementById("ul1");
+//del.remove(del.selectedIndex);
+//alert($(#ul1).attr('id')+"list deleting");
+});
+});
+</script>
+</head>
+<body>
+<div data-role="page" id="pageone">
+<div data-role="header">
+<h1 aling="center">CDAC Library</h1>
+</div>
+<div data-role="main">
+<p>Welcome to CDAC library application</p>
+<a href="#pagetwo" data-transition="slide"><button type="button" class="ui-btn ui-btn-inline ui-icon-arrow-r ui-btn-icon-left">start button</button></a>
+</div>
+<div data-role="footer">
+<h5>visit:www.cdac.in</h5>
+</div>
+</div>
+<div data-role="page" id="pagetwo">
+<div data-role="header">
+<h1>Book Store</h1>
+</div>
+<div data-role="main">
+<form id="form1" action="#pagetwo" method="post">
+<label for="btitle">Book Title:</label>
+<input type="text" id="btitle">
+<label for="bno">Book ISBN no:</label>
+<input type="number" id="bno" placeholder="Enter number only">
+<label for="bath">Book Author:</label>
+<input type="text" id="bath">
+<label for="sub">Subject:</label>
+<input type="text" id="sub">
+<button  id="save" name="b1" type="button" class="ui-btn ui-btn-inline ui-icon-action ui-btn-icon-left">Save</button>
+<button type="reset" class="ui-btn ui-btn-inline ui-icon-recycle ui-btn-icon-left">Reset</button>
+<button  type="button" class="ui-btn ui-btn-inline ui-icon-plus ui-btn-icon-left">New</button>
+<a href="#pagethree"><button id="list" class="ui-btn ui-btn-inline ui-icon-bars ui-btn-icon-left">List</button></a>
+<button  class="ui-btn ui-btn-inline ui-icon-search ui-btn-icon-left">Search</button>
+</form>
+</div>
+<div data-role="footer">
+<h5>visit:www.cdac.in</h5>
+</div>
+</div>
+<div data-role="page" id="pagethree">
+<div data-role="header">
+<h1>Book List</h1>
+</div>
+<div data-role="mane" id="divlist">
+<ul data-role="listview">
+<li data-role="collapsible" data-iconpos="right" data-insert="false">
+<h2>HTML</h2>
+<ul data-role="listview" data-theme="a" id="ul1">
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">HTML Black book</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">HTML Black book</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">HTML Black book</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">HTML Black book</a></li>
+</ul>
+</li>
+<li data-role="collapsible" data-iconpos="right" data-insert="false">
+<h2>JAVA</h2>
+<ul data-role="listview" data-theme="b" id="ul2">
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">JAVA Black book</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">JAVA Black book</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">JAVA Black book</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">JAVA Black book</a></li>
+</ul>
+</li>
+<li data-role="collapsible" data-iconpos="right" data-insert="false">
+<h2>C</h2>
+<ul data-role="listview" data-theme="a" id="ul3">
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Let'us c</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Let'us c</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Let'us c</a></li>
+<li><a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Let'us c</a></li>
+</ul>
+</li>
+</ul>
+<div data-role="popup" id="myPopup" class="ui-content" data-dismissible="false" style="max-width:400px;">
+<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+<button id="b1" >delete</button><button id="b2">update</button>
+</div>
+</div>
+<div data-role="footer">
+<h2>cdac.com</h2>
+</div>
+</div>
+</body>
+</html>

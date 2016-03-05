@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+ </head>
+ 
+ 
+ <body>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="main.js"></script>
+   
+<div data-role="page" id="dashboard">
+  <div data-role="header">
+    <h3 class="ui-bar ui-bar-a ui-corner-all">Dashboard</h3>
+  </div>
+ <div data-role="main" class="ui-content">
+ <fieldset class="ui-grid-a">
+    <div class="ui-block-a" ><button class="ui-btn ui-corner-all" id="regButton" data-transition="pop" onclick="testActivity()"><img src="img/cat_allnews.png"/></button></div>
+    <div class="ui-block-b"><a href="#" class="ui-shadow ui-btn ui-corner-all" data-transition="pop"><img src="img/cat_entertainment.png"/></a></div>
+</fieldset>
+ <fieldset class="ui-grid-a">
+    <div class="ui-block-a"><a href="#" class="ui-shadow ui-btn ui-corner-all" data-transition="pop"><img src="img/cat_international.png"/></a></div>
+    <div class="ui-block-b"><a href="#" class="ui-shadow ui-btn ui-corner-all" data-transition="pop"><img src="img/cat_technology.png"/></a></div>
+</fieldset>
+ </div>
+ <div dtata-role="footer">
+ 	<h6 align="center">&copy; Wizturn.com </h6>
+</div>
+</div>
+ </body>
+ </html>

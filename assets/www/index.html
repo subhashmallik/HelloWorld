@@ -1,0 +1,48 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+
+    <title>First App</title>
+
+  <script src="cordova-2.2.0.js"></script>
+
+  <script>
+
+     function onLoad(){
+
+          document.addEventListener("deviceready",
+onDeviceReady, true);
+
+     }
+
+     function onDeviceReady(){
+navigator.notification.alert("PhoneGap is working!!");
+
+     }
+
+
+  </script>
+
+
+  </head>
+
+
+  <body onload="onLoad();">
+
+
+       <h1>Welcome to PhoneGap</h1>
+
+
+       <a href="bookstore.html">GO to Book Store</a><br/>
+       <br/>
+       <a href="mobileapp.html">GO to Mobile app</a>
+       <br/>
+       <br/>
+       <a href="Menu.html">Go to Menu</a>
+  </body>
+
+
+</html>
